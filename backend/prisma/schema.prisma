@@ -15,42 +15,40 @@ datasource db {
 }
 
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  role      Role     @default(USER)
-  posts     Post[]
-  comments  Comment[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Scientist {
+  id            Int       @id @default(autoincrement())
+  name          String
+  role          Role      @default(INTERN)
+  location      String
+  era           DateTime
+  favEmoji      String
+  team          Team      @relation(fields: [teamId], references: [id])
+  teamId        Int
+  reviews       Review[]
 }
 
-model Post {
-  id        Int       @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean   @default(false)
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
-  comments  Comment[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+model Team {
+  id            Int       @id @default(autoincrement())
+  teamName      String
+  invention     String
+  description   String
+  themeSong     String
+  scientists    Scientist[]
 }
 
-model Comment {
-  id        Int      @id @default(autoincrement())
-  text      String
-  post      Post     @relation(fields: [postId], references: [id])
-  postId    Int
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt DateTime @default(now())
+model Review {
+  id            Int      @id @default(autoincrement())
+  reviewerName  String
+  ratingStars   Int
+  fromMadSci    Boolean
+  reviewDesc    String
+  scientist     Scientist @relation(fields: [scientistId], references: [id])
+  scientistId   Int
 }
 
 
 enum Role {
-  USER
-  EDITOR
-  ADMIN
+  LEAD_SCIENTIST
+  ASSISTANT
+  INTERN
 }
