@@ -117,52 +117,47 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.ScientistScalarFieldEnum = {
   id: 'id',
-  email: 'email',
   name: 'name',
   role: 'role',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  location: 'location',
+  era: 'era',
+  favEmoji: 'favEmoji',
+  teamId: 'teamId'
 };
 
-exports.Prisma.PostScalarFieldEnum = {
+exports.Prisma.TeamScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  teamName: 'teamName',
+  invention: 'invention',
+  description: 'description',
+  themeSong: 'themeSong'
 };
 
-exports.Prisma.CommentScalarFieldEnum = {
+exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
-  text: 'text',
-  postId: 'postId',
-  authorId: 'authorId',
-  createdAt: 'createdAt'
+  reviewerName: 'reviewerName',
+  ratingStars: 'ratingStars',
+  fromMadSci: 'fromMadSci',
+  reviewDesc: 'reviewDesc',
+  scientistId: 'scientistId'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
 exports.Role = exports.$Enums.Role = {
-  USER: 'USER',
-  EDITOR: 'EDITOR',
-  ADMIN: 'ADMIN'
+  LEAD_SCIENTIST: 'LEAD_SCIENTIST',
+  ASSISTANT: 'ASSISTANT',
+  INTERN: 'INTERN'
 };
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Post: 'Post',
-  Comment: 'Comment'
+  Scientist: 'Scientist',
+  Team: 'Team',
+  Review: 'Review'
 };
 
 /**

@@ -8,9 +8,17 @@ const app = express(); //new express client
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/data", async (request, response) => {
+// app.get("/api/scienceFair", async (request, response) => {
+//     try {
+
+//     } catch (error) {
+
+//     }
+// });
+
+app.get("/api/scienceFair/participants", async (request, response) => {
     try {
-        const data = await prisma.user.findMany();
+        const data = await prisma.team.findMany();
         return response.json(data);
     } catch (error) {
         console.error ('Error fetching data: ', error);
@@ -20,4 +28,4 @@ app.get("/api/data", async (request, response) => {
 
 app.listen(5555, () => {
     console.log("Server is listening on port 5555");
-})
+});
