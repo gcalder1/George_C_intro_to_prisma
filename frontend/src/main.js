@@ -1,12 +1,15 @@
 const rosterContainer = document.getElementById("teamsRoster");
-const reviewsContainer = document.getElementById("reviewsForScientists")
+const reviewsContainer = document.getElementById("reviewsForScientists");
+const documentBody = document.getElementById("body");
 
 async function fetchAndDisplayData () {
   try {
 
-    rosterContainer.textContent = "Loading data...";
+    documentBody.textContent = "Loading...";
+    rosterContainer.textContent = "Loading...";
+    reviewsContainer.textContent = "Loading...";
 
-    const response = await fetch("http://localhost:5555/api/scienceFair");
+    const response = await fetch("http://localhost:5555/scienceFair");
 
     if (!response.ok) {
       console.log("Response is not okay")
@@ -22,8 +25,30 @@ async function fetchAndDisplayData () {
       return;
     }
 
-    const scientistsData = data.map(nested => nested.scientists.map(deeper => deeper.name))
-    console.log(scientistsData)
+    const body = `
+      <div id="home" class="header">
+      <h1>Timeless Mad-Scientist Science Fair</h1>
+      <p>Innovation throughout the ages without barriers</p>
+    </div>
+
+    <div id="navContainer">
+      <nav id="navBar">
+        <ul>
+          <li><a href="#" class="category">Home</a></li>
+          <li><a href="#teams" class="category">Teams</a></li>
+          <li><a href="#reviews" class="category">Reviews</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div>
+      <img src=""/>
+      <div>
+        <p>Compete for a chance to win the Grand Prize:</p>
+        <p>$1,000,000,000</p>
+      </div>
+    </div>
+    `;
 
     const roster = `
       <ul class="rosterInfo">
@@ -88,13 +113,15 @@ async function fetchAndDisplayData () {
       <ul>
 
     `;
-
+    
+    documentBody.innerHTML = body;
     rosterContainer.innerHTML = roster;
     reviewsContainer.innerHTML = reviews;
 
   } catch (error) {
     console.error("Error:", error);
     rosterContainer.textContent = "Failed to load data. Check console for details.";
+    reviewsContainer.textContent = "Failed to load data. Check console for details."
   }
 
 }

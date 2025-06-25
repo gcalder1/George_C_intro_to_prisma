@@ -8,28 +8,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// app.get("/api/scienceFair", async (request, response) => {
-//     try {
-        
-//         const teamData = await prisma.team.findMany();
-//         const scientistData = await prisma.scientist.findMany();
-//         const reviewData = await prisma.review.findMany();
+app.get("/", (request, response) => {
 
-//         const data = { 
-//             scientists: scientistData,
-//             teams: teamData,
-//             reviews: reviewData
-//         };
+    response.status(200).send({
+        responseMessage: "Welcome to the root. Please navigate to /scienceFair within your path to see all participating groups and other important information!"
+    });
 
-//         return response.json(data);
+});
 
-//     } catch (error) {
-//         console.error ('Error fetching data: ', error);
-//         response.status(500).json({error: 'Internal server error'});
-//     }
-// });
-
-app.get("/api/scienceFair", async (request, response) => {
+app.get("/scienceFair", async (request, response) => {
     try {
         
         /*
@@ -47,7 +34,7 @@ app.get("/api/scienceFair", async (request, response) => {
             }
         });
 
-        return response.json(teamFullOverview);
+        return response.status(200).json(teamFullOverview);
 
     } catch (error) {
         console.error(`Error fetching data: ${error}`);
