@@ -2,3 +2,17 @@
   text-decoration-style: none;
   list-style-type: none;
 }
+
+a {
+  text-decoration: none;
+  text-decoration-style: none;
+  color: #222;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.header {
+  border: #222 solid 2px;
+}
