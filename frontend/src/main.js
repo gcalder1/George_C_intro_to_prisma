@@ -1,11 +1,12 @@
-const dataContainer = document.getElementById("app");
+const rosterContainer = document.getElementById("teamsRoster");
+const reviewsContainer = document.getElementById("reviewsForScientists")
 
 async function fetchAndDisplayData () {
   try {
 
-    dataContainer.textContent = "Loading data...";
+    rosterContainer.textContent = "Loading data...";
 
-    const response = await fetch("http://localhost:5555/api/data");
+    const response = await fetch("http://localhost:5555/api/scienceFair");
 
     if (!response.ok) {
       console.log("Response is not okay")
@@ -17,25 +18,34 @@ async function fetchAndDisplayData () {
     console.log(data);
 
     if (data.length === 0) {
-      dataContainer.textContent = "No data found";
+      rosterContainer.textContent = "No data found";
       return;
     }
 
-    const html = `
+    const scientistsData = data.map(scientists => scientists.scientists)
+    console.log(scientistsData)
+
+    const roster = `
       <ul>
-        ${data.map(item => `
+        ${data.map(roster => `
             <li>
-              <h2>${item.name}</h2>
-              <strong>Role: </strong> ${item.role}<br>
-              <strong>Email: </strong>${item.email}<br>
+              <h2 id="teamHeader">Faction ${roster.id} - ${roster.teamName}</h2>
+              <strong class="teamInfo">Invention: </strong> <p>${roster.invention}</p> <br>
+              <strong class="teamInfo">Description: </strong> <p>${roster.description}</p> <br>
+              <strong class="teamInfo">Victory Theme: </strong> <p>${roster.themeSong}</p> <br>
             </li>`).join(" ")}
+        
       </ul>
     `
-    dataContainer.innerHTML = html;
+
+    const reviews = ``;
+
+    rosterContainer.innerHTML = roster;
+    reviewsContainer.innerHTML = reviews;
 
   } catch (error) {
     console.error("Error:", error);
-    dataContainer.textContent = "Failed to load data. Check console for details.";
+    rosterContainer.textContent = "Failed to load data. Check console for details.";
   }
 
 }
