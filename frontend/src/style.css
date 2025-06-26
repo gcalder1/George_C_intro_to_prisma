@@ -115,49 +115,48 @@ div#bannerAnnouncement {
   
 }
 
-/*
----
-*/
-
-#rosterInfoScrollable {
+.rosterContainer {
+  border: red solid 2px;
   display: flex;
-  overflow: auto;
   flex-direction: column;
-  border: #222 2px solid;
-}
-
-#rosterCard {
-  border: purple 2px solid;
-  display: flex;
-}
-
-#scientistCard {
-  border: blue 2px solid;
-  display: flex;
-}
-
-/*
----
-*/
-
-#reviewsInfoScrollable {
-  display: flex;
+  flex: 1;
   overflow: auto;
-  border: orange 2px solid;
 }
 
-#reviewCard {
-  border: green 2px solid;
+.rosterCard {
+  border: blue solid 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#reviewCardDetails {
-  border: red 2px solid;
+.scientistsContainer {
+  border: yellow solid 2px;
+  flex-direction: row;
+  display: flex;
 }
 
-/*
----
-*/
+.scientistCard {
+  border: purple solid 2px;
+  display: flex;
+  flex-direction: column;
+}
 
-strong.teamInfo {
-  font-weight: bold;
+.reviewsContainer {
+border: green 2px solid;
+display: flex;
+flex-direction: row;
+overflow: auto;
+}
+
+.reviewCard {
+border: orange solid 2px;
+display: flex;
+flex-direction: row;
+}
+
+.reviewCard_reviewerInfo {
+  border: black 2px solid;
+  display: flex;
+  overflow: hidden;
 }
