@@ -1,6 +1,7 @@
 const rosterContainer = document.getElementById("teamsRoster");
 const reviewsContainer = document.getElementById("reviewsForScientists");
 const documentBody = document.getElementById("body");
+const errorBody = document.getElementById("error");
 
 async function fetchAndDisplayData () {
   try {
@@ -27,8 +28,8 @@ async function fetchAndDisplayData () {
 
     const body = `
       <div id="home" class="header">
-      <h1>Timeless Mad-Scientist Science Fair</h1>
-      <p>Innovation throughout the ages without barriers</p>
+      <p id="pageHeader">Timeless Mad-Scientist Science Fair</p>
+      <p>Madness. Innovation. Timeless.</p>
     </div>
 
     <div id="navContainer">
@@ -41,9 +42,9 @@ async function fetchAndDisplayData () {
       </nav>
     </div>
 
-    <div>
-      <img src=""/>
-      <div>
+    <div id="bannerContainer" alt="madScientist">
+      <img id="banner" src="/madScientistCreations.png"/> <!--Free Stock AI-Generated Image from Gemini by Google-->
+      <div id="bannerAnnouncement">
         <p>Compete for a chance to win the Grand Prize:</p>
         <p>$1,000,000,000</p>
       </div>
@@ -52,52 +53,54 @@ async function fetchAndDisplayData () {
 
     const roster = `
       <ul class="rosterInfo">
+        <div id="rosterInfoScrollable">
+          ${data.map(roster => `
 
-        ${data.map(roster => `
+              <li>
+                <div id="rosterCard">
+                  <h2 id="teamHeader">Faction ${roster.id} - ${roster.teamName}</h2>
+                  <strong class="teamInfo">Invention: </strong> <p>${roster.invention}</p> <br>
+                  <strong class="teamInfo">Description: </strong> <p>${roster.description}</p> <br>
+                  <strong class="teamInfo">Victory Theme: </strong> <p>${roster.themeSong}</p> <br>
+                </div>
+                ${roster.scientists.map(scientistInfo => `
+                  
+                <ul class="scientistInfo">
 
-            <li>
+                  <li>
+                    <div id="scientistCard">
+                      <strong class="teamInfo">${scientistInfo.role}: </strong> <p>${scientistInfo.name}</p> <br>
+                      <strong class="teamInfo">Geographic Origin: </strong> <p>${scientistInfo.location}</p> <br>
+                      <strong class="teamInfo">Era: </strong> <p>${scientistInfo.era}</p> <br>
+                      <strong class="teamInfo">Victory Emoji: </strong> <p>${scientistInfo.favEmoji}</p> <br>
+                      <strong class="teamInfo">Signup Number: </strong> <p>${scientistInfo.id}</p> <br>
+                    </div>
+                  </li>
 
-              <h2 id="teamHeader">Faction ${roster.id} - ${roster.teamName}</h2>
-              <strong class="teamInfo">Invention: </strong> <p>${roster.invention}</p> <br>
-              <strong class="teamInfo">Description: </strong> <p>${roster.description}</p> <br>
-              <strong class="teamInfo">Victory Theme: </strong> <p>${roster.themeSong}</p> <br>
+                </ul>
 
-              ${roster.scientists.map(scientistInfo => `
-                
-              <ul class="scientistInfo">
+              </li>
+              
+                `).join(" ")}
 
-                <li>
-                  <strong class="teamInfo">${scientistInfo.role}: </strong> <p>${scientistInfo.name}</p> <br>
-                  <strong class="teamInfo">Geographic Origin: </strong> <p>${scientistInfo.location}</p> <br>
-                  <strong class="teamInfo">Era: </strong> <p>${scientistInfo.era}</p> <br>
-                  <strong class="teamInfo">Victory Emoji: </strong> <p>${scientistInfo.favEmoji}</p> <br>
-                  <strong class="teamInfo">Signup Number: </strong> <p>${scientistInfo.id}</p> <br>
-                </li>
-
-              </ul>
-
-            </li>
-            
+              </li>
+              
               `).join(" ")}
-
-            </li>
-            
-            `).join(" ")}
-        
+        </div>
       </ul>
     `;
 
     const reviews = `
-      <ul>
-
-      ${data.map(teams => teams.scientists.map(scientists => `
+      <ul id="reviewsInfo">
+        <div id="reviewsInfoScrollable">
+          ${data.map(teams => teams.scientists.map(scientists => `
 
         <li>
-
-          <h2>Reviews for ${scientists.name}</h2><p>by ${scientists.reviews.map(reviews => " " + reviews.reviewerName)}</p> <br>
-          
+          <div id="reviewCard">
+            <h2>Reviews for ${scientists.name}</h2><p>by ${scientists.reviews.map(reviews => " " + reviews.reviewerName)}</p> <br>
+          </div>
           ${scientists.reviews.map(reviews => `
-
+          <div id="reviewCardDetails">
             <strong class="teamInfo">Audience Seat Number: </strong> <p>${reviews.id}</p> <br>
             <strong class="teamInfo">Rating: </strong> <p>${reviews.ratingStars} Stars</p> <br>
             <strong class="teamInfo">Reviewer Name: </strong> <p>${reviews.reviewerName}</p> <br>
@@ -105,13 +108,12 @@ async function fetchAndDisplayData () {
             <strong class="teamInfo">Review: </strong> <p>${reviews.reviewDesc}</p> <br>
             
             `).join(" ")}
-
+          </div>  
         </li>
 
         `).join(" ")).join(" ")}
-
+        </div>
       <ul>
-
     `;
     
     documentBody.innerHTML = body;
@@ -120,8 +122,10 @@ async function fetchAndDisplayData () {
 
   } catch (error) {
     console.error("Error:", error);
-    rosterContainer.textContent = "Failed to load data. Check console for details.";
-    reviewsContainer.textContent = "Failed to load data. Check console for details."
+    errorBody.textContent = "Failed to load data. Check console for details.";
+    documentBody.textContent = "";
+    rosterContainer.textContent = "";
+    reviewsContainer.textContent = "";
   }
 
 }

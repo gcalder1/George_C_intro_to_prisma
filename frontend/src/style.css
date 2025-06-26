@@ -1,6 +1,16 @@
 * {
   text-decoration-style: none;
   list-style-type: none;
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
 }
 
 a {
@@ -14,5 +24,140 @@ ul {
 }
 
 .header {
-  border: #222 solid 2px;
+  background-color: #9f2323;
+  padding: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.header #pageHeader{
+  font-size: 48px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.header p {
+  color: rgb(236, 233, 228);
+  margin: 0px;
+}
+
+#navBar ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px;
+  margin: 0px;  
+}
+
+#navBar li {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  background-color: rgb(236, 233, 228);
+}
+
+#navBar li .category {
+  display: block;
+  padding: 15px 0;
+}
+
+a.category {
+  color: #9f2323;
+  transition: 0.1s ease-in;
+}
+
+a.category:hover {
+  background-color: #9f2323;
+  color: rgb(236, 233, 228);
+  transition: 0.1s ease-out;
+}
+
+a.category:active {
+  box-shadow: 0px 5px 10px #222;
+  background-color: #9f2323;
+  color: rgb(236, 233, 228);
+  transform: scale(1.02);
+  transition: 0.1s ease-out;
+}
+
+#banner {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+img#banner {
+  filter: blur(1px);
+}
+
+#bannerContainer {
+  position: relative;
+  width: 100%;
+}
+
+#bannerAnnouncement {
+  position: absolute;
+  color: #9f2323;
+  width: 100%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+}
+
+#bannerAnnouncement p {
+  margin: 10px 0;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+div#bannerAnnouncement {
+  background-color: rgba(232, 227, 227, 0.6);
+  
+}
+
+/*
+---
+*/
+
+#rosterInfoScrollable {
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+  border: #222 2px solid;
+}
+
+#rosterCard {
+  border: purple 2px solid;
+  display: flex;
+}
+
+#scientistCard {
+  border: blue 2px solid;
+  display: flex;
+}
+
+/*
+---
+*/
+
+#reviewsInfoScrollable {
+  display: flex;
+  overflow: auto;
+  border: orange 2px solid;
+}
+
+#reviewCard {
+  border: green 2px solid;
+}
+
+#reviewCardDetails {
+  border: red 2px solid;
+}
+
+/*
+---
+*/
+
+strong.teamInfo {
+  font-weight: bold;
 }
