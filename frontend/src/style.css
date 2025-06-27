@@ -146,7 +146,12 @@ div#bannerAnnouncement {
   flex: 1;
   padding: 25px 25% 25px 25%;
   overflow: auto;
-  height: 215px;
+  height: 250px;
+  transition: 0.3s ease-in-out;
+}
+
+.rosterContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .rosterCard {
@@ -156,6 +161,18 @@ div#bannerAnnouncement {
   display: flex;
   flex-direction: column;
   text-align: center;
+  transform: scale(1);
+  transition: 0.3ms ease-in-out;
+}
+
+.rosterCard:hover {
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+body:has(.rosterCard:hover) .rosterContainer {
+  transition: 0.3s ease-in-out;
 }
 
 .scientistsContainer {
@@ -163,8 +180,13 @@ div#bannerAnnouncement {
   flex-direction: column;
   display: flex;
   padding: 25px 25% 25px 25%;
-  height: 215px;
+  height: 200px;
   overflow: auto;
+  transition: 0.3s ease-in-out;
+}
+
+.scientistsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .scientistCard {
@@ -173,6 +195,17 @@ div#bannerAnnouncement {
   background-color: #9f2323;
   display: flex;
   flex-direction: column;
+  transform: scale(1);
+}
+.scientistCard:hover {
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+body:has(.scientistCard:hover) .scientistsContainer {
+  transition: 0.3s ease-in-out;
+  height: 700px;
 }
 
 .sciCardBody {
@@ -186,6 +219,11 @@ flex-direction: column;
 padding: 25px 25% 25px 25%;
 height: 215px;
 overflow: auto;
+transition: 0.3s ease-in-out;
+}
+
+.reviewsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .reviewCard {
@@ -195,6 +233,18 @@ background-color: #9f2323;
 display: flex;
 flex-direction: column;
 justify-content: center;
+transform: scale(1);
+}
+
+.reviewCard:hover {
+  transition: 0.3s ease-in-out;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+body:has(.reviewCard:hover) .reviewsContainer {
+  transition: 0.3s ease-in-out;
+  height: 1000px;
 }
 
 .reviewCard_reviewerInfo {
@@ -208,6 +258,7 @@ h2.teamHeader {
   font-weight: bold;
   padding: 0px 10px 0px 10px;
   color: rgb(236, 233, 228);
+  cursor:default;
 }
 
 h2.teamNameHeader {
@@ -271,4 +322,5 @@ div.copyright{
   padding: 25px;
   font-size: 16px;
   color: rgb(236, 233, 228);
+  cursor: pointer;
 }
