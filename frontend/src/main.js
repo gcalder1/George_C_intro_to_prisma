@@ -98,11 +98,13 @@ async function fetchAndDisplayData () {
           <div class="rosterCard">
             <h2 class="teamHeader">Faction ${roster.id} - ${roster.teamName}</h2>
               <div class="teamDetails">
-                <strong class="infoHeader">Invention: </strong><p>${roster.invention}</p>
-                <strong class="infoHeader">Description: </strong><p>${roster.description}</p>
-                <strong class="infoHeader">Victory Theme: </strong><p>${roster.themeSong}</p>
+                <strong class="infoHeader">Invention: </strong><p class="infoDetails">${roster.invention}</p>
+                <strong class="infoHeader">Description: </strong><p class="infoDetails">${roster.description}</p>
+                <strong class="infoHeader">Victory Theme: </strong><p class="infoDetails">${roster.themeSong}</p>
               </div>
+              
           </div>
+          <div class="divider"></div>
           `).join(" ")}
       </div>
     `;
@@ -111,14 +113,19 @@ async function fetchAndDisplayData () {
       <div class="scientistsContainer">
         ${data.map(data => `
           <div class="scientistCard">
-            <h2>${data.teamName}' faction members: </h2>
+            <h2 class="teamNameHeader">${data.teamName}' faction members: </h2>
               ${data.scientists.map(scientists => `
-                <strong class="infoHeader">${scientists.role}: </strong><p>${scientists.name}</p>
-                <strong class="infoHeader">Era: </strong><p>${scientists.era}</p>
-                <strong class="infoHeader">Location: </strong><p>${scientists.location}</p>
-                <strong class="infoHeader">Victory Emote: </strong><p>${scientists.favEmoji}</p>                
+                <div class="sciCardBody">
+                <strong class="infoHeader">${scientists.role}: </strong><p class="infoDetails">${scientists.name}</p>
+                <strong class="infoHeader">Era: </strong><p class="infoDetails">${scientists.era}</p>
+                <strong class="infoHeader">Location: </strong><p class="infoDetails">${scientists.location}</p>
+                <strong class="infoHeader">Victory Emote: </strong><p class="infoDetails">${scientists.favEmoji}</p>
+                <div class="seperator">◆</div>
+                </div>  
+                <div class="divider"></div>              
                 `).join(" ")}
           </div>
+          <div class="divider"></div>
           `).join(" ")}
       </div>
     `;
@@ -127,18 +134,20 @@ async function fetchAndDisplayData () {
       <div class="reviewsContainer">
         ${data.map(data => data.scientists.map(data => `
           <div class="reviewCard">
-            <h2>Reviews for ${data.name}</h2>
+            <h2 class="reviewHeader">Reviews for ${data.name}</h2>
             <div class="reviewCard_reviewerInfo">
               ${data.reviews.map(review => `
-                <strong class="infoHeader">Reviewer Name: </strong><p>${review.reviewerName}</p>
-                <strong class="infoHeader">Verified Association Member: </strong><p>${review.fromMadSci}</p>
-                <strong class="infoHeader">Rating: </strong><p>${review.ratingStars}</p>
-                <strong class="infoHeader">Review: </strong><p>${review.reviewDesc}</p>
-                <strong class="infoHeader">Audience Seat Number: </strong><p>${review.id}</p>
+                <strong class="infoHeader">Reviewer Name: </strong><p class="infoDetails">${review.reviewerName}</p>
+                <strong class="infoHeader">Verified Association Member: </strong><p class="infoDetails">${review.fromMadSci}</p>
+                <strong class="infoHeader">Rating: </strong><p class="infoDetails">${review.ratingStars} ⭐</p>
+                <strong class="infoHeader">Review: </strong><p class="infoDetails">${review.reviewDesc}</p>
+                <strong class="infoHeader">Audience Seat Number: </strong><p class="infoDetails">${review.id}</p>
+                <div class="seperator">◆</div>
+                <div class="divider"></div>
                 `).join(" ")}
             </div>
           </div>
-
+          <div class="divider"></div>
           `).join(" ")).join(" ")}
       </div>
     `
