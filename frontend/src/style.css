@@ -9,8 +9,9 @@
 
 body {
   margin: 0px;
-  padding: 0px;
+  padding: 0px 10% 0px 10%;
   border: 0px;
+  background-color: rgb(236, 233, 228);
 }
 
 a {
@@ -112,11 +113,33 @@ img#banner {
 
 div#bannerAnnouncement {
   background-color: rgba(232, 227, 227, 0.6);
-  
+}
+
+.teamsBanner {
+  font-size: 42px;
+  text-align: center;
+  padding: 50px 0px 50px 10px;
+  background-color: #9f2323;
+  color: rgb(236, 233, 228);
+}
+
+.scientistsBanner {
+  font-size: 42px;
+  text-align: center;
+  padding: 50px 0px 50px 10px;
+  background-color: #9f2323;
+  color: rgb(236, 233, 228);
+}
+
+.reviewsBanner {
+  font-size: 42px;
+  text-align: center;
+  padding: 50px 0px 50px 10px;
+  background-color: #9f2323;
+  color: rgb(236, 233, 228);
 }
 
 .rosterContainer {
-  border: red solid 2px;
   background-color: rgb(236, 233, 228);
   display: flex;
   flex-direction: column;
@@ -127,7 +150,6 @@ div#bannerAnnouncement {
 }
 
 .rosterCard {
-  border: blue solid 2px;
   border-radius: 10px;
   box-shadow: 0px 5px 10px #222;
   background-color: #9f2323;
@@ -137,7 +159,6 @@ div#bannerAnnouncement {
 }
 
 .scientistsContainer {
-  border: yellow solid 2px;
   background-color: rgb(236, 233, 228);
   flex-direction: column;
   display: flex;
@@ -147,7 +168,6 @@ div#bannerAnnouncement {
 }
 
 .scientistCard {
-  border: purple solid 2px;
   border-radius: 10px;
   box-shadow: 0px 5px 10px #222;
   background-color: #9f2323;
@@ -156,12 +176,10 @@ div#bannerAnnouncement {
 }
 
 .sciCardBody {
-  border: rgb(143, 147, 207) solid 2px;
   overflow: auto;
 }
 
 .reviewsContainer {
-border: green 2px solid;
 background-color: rgb(236, 233, 228);
 display: flex;
 flex-direction: column;
@@ -171,7 +189,6 @@ overflow: auto;
 }
 
 .reviewCard {
-border: orange solid 2px;
 border-radius: 10px;
 box-shadow: 0px 5px 10px #222;
 background-color: #9f2323;
@@ -181,7 +198,6 @@ justify-content: center;
 }
 
 .reviewCard_reviewerInfo {
-  border: black 2px solid;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -190,6 +206,7 @@ justify-content: center;
 h2.teamHeader {
   font-size: 20px;
   font-weight: bold;
+  padding: 0px 10px 0px 10px;
   color: rgb(236, 233, 228);
 }
 
@@ -198,6 +215,7 @@ h2.teamNameHeader {
   justify-content: center;
   font-size: 20px;
   font-weight: bold;
+  padding: 0px 10px 0px 10px;
   color: rgb(236, 233, 228);
 }
 
@@ -205,11 +223,11 @@ h2.reviewHeader {
   display: flex;
   justify-content: center;
   font-weight: bold;
+  padding: 0px 10px 0px 10px;
   color: rgb(236, 233, 228);
 }
 
 strong.infoHeader {
-  border: greenyellow solid 2px;
   color: #222;
   display: flex;
   justify-content: center;
@@ -217,20 +235,40 @@ strong.infoHeader {
 }
 
 p.infoDetails {
-  border: aqua solid 2px;
   text-align: center;
   padding: 0;
   margin: 0;
   color: rgb(236, 233, 228);
 }
 
-.divider {
-  border: red 2px solid;
-  padding-top: 25px;
-  background-color: rgb(236, 233, 228);
-}
-
 .seperator {
   text-align: center;
+  color: rgb(236, 233, 228);
+}
+
+.footerContainer {
+  background-color: #9f2323;
+  margin: 0;
+}
+
+.footerList {
+  margin: 0;
+  padding: 50px 25px 50px 25px
+}
+
+li.footDetails {
+ margin: 25px;
+ 
+}
+
+a.footText {
+  color: rgb(236, 233, 228);
+  font-size: 24px;
+}
+
+div.copyright{
+  text-align: end;
+  padding: 25px;
+  font-size: 16px;
   color: rgb(236, 233, 228);
 }

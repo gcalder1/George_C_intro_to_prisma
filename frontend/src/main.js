@@ -2,6 +2,7 @@ const rosterContainer = document.getElementById("teamsRoster");
 const scientistsContainer = document.getElementById("scientistsInTeam")
 const reviewsContainer = document.getElementById("reviewsForScientists");
 const documentBody = document.getElementById("body");
+const footer = document.getElementById("footer");
 const errorBody = document.getElementById("error");
 
 async function fetchAndDisplayData () {
@@ -10,6 +11,7 @@ async function fetchAndDisplayData () {
     documentBody.textContent = "Loading...";
     rosterContainer.textContent = "Loading...";
     reviewsContainer.textContent = "Loading...";
+    footer.textContent = "Loading...";
 
     const response = await fetch("http://localhost:5555/scienceFair");
 
@@ -53,46 +55,8 @@ async function fetchAndDisplayData () {
     </div>
     `;
 
-    // const roster = `
-    //   <ul class="rosterInfo">
-    //     <div id="rosterInfoScrollable">
-    //       ${data.map(roster => `
-
-    //           <li>
-    //             <div id="rosterCard">
-    //               <h2 id="teamHeader">Faction ${roster.id} - ${roster.teamName}</h2>
-    //               <strong class="teamInfo">Invention: </strong> <p>${roster.invention}</p> <br>
-    //               <strong class="teamInfo">Description: </strong> <p>${roster.description}</p> <br>
-    //               <strong class="teamInfo">Victory Theme: </strong> <p>${roster.themeSong}</p> <br>
-    //             </div>
-    //             ${roster.scientists.map(scientistInfo => `
-                  
-    //             <ul class="scientistInfo">
-
-    //               <li>
-    //                 <div id="scientistCard">
-    //                   <strong class="teamInfo">${scientistInfo.role}: </strong> <p>${scientistInfo.name}</p> <br>
-    //                   <strong class="teamInfo">Geographic Origin: </strong> <p>${scientistInfo.location}</p> <br>
-    //                   <strong class="teamInfo">Era: </strong> <p>${scientistInfo.era}</p> <br>
-    //                   <strong class="teamInfo">Victory Emoji: </strong> <p>${scientistInfo.favEmoji}</p> <br>
-    //                   <strong class="teamInfo">Signup Number: </strong> <p>${scientistInfo.id}</p> <br>
-    //                 </div>
-    //               </li>
-
-    //             </ul>
-
-    //           </li>
-              
-    //             `).join(" ")}
-
-    //           </li>
-              
-    //           `).join(" ")}
-    //     </div>
-    //   </ul>
-    // `;
-
     const roster = `
+      <div class="teamsBanner">Participating Factions: </div>
       <div class="rosterContainer">
         ${data.map(roster => `
           <div class="rosterCard">
@@ -101,15 +65,17 @@ async function fetchAndDisplayData () {
                 <strong class="infoHeader">Invention: </strong><p class="infoDetails">${roster.invention}</p>
                 <strong class="infoHeader">Description: </strong><p class="infoDetails">${roster.description}</p>
                 <strong class="infoHeader">Victory Theme: </strong><p class="infoDetails">${roster.themeSong}</p>
+                <br>
               </div>
               
           </div>
-          <div class="divider"></div>
+          <br>
           `).join(" ")}
       </div>
     `;
 
     const scientist = `
+      <div class="scientistsBanner">Participating Scientists: </div>
       <div class="scientistsContainer">
         ${data.map(data => `
           <div class="scientistCard">
@@ -122,15 +88,16 @@ async function fetchAndDisplayData () {
                 <strong class="infoHeader">Victory Emote: </strong><p class="infoDetails">${scientists.favEmoji}</p>
                 <div class="seperator">◆</div>
                 </div>  
-                <div class="divider"></div>              
+                <br>            
                 `).join(" ")}
           </div>
-          <div class="divider"></div>
+          <br>
           `).join(" ")}
       </div>
     `;
 
     const reviews = `
+      <div class="reviewsBanner">Thoughts from our community: </div>
       <div class="reviewsContainer">
         ${data.map(data => data.scientists.map(data => `
           <div class="reviewCard">
@@ -138,50 +105,39 @@ async function fetchAndDisplayData () {
             <div class="reviewCard_reviewerInfo">
               ${data.reviews.map(review => `
                 <strong class="infoHeader">Reviewer Name: </strong><p class="infoDetails">${review.reviewerName}</p>
-                <strong class="infoHeader">Verified Association Member: </strong><p class="infoDetails">${review.fromMadSci}</p>
+                <strong class="infoHeader">Verified Association Member: </strong><p class="infoDetails">${review.fromMadSci ? "✅" : "❌"}</p>
                 <strong class="infoHeader">Rating: </strong><p class="infoDetails">${review.ratingStars} ⭐</p>
                 <strong class="infoHeader">Review: </strong><p class="infoDetails">${review.reviewDesc}</p>
                 <strong class="infoHeader">Audience Seat Number: </strong><p class="infoDetails">${review.id}</p>
                 <div class="seperator">◆</div>
-                <div class="divider"></div>
+                <br>
                 `).join(" ")}
             </div>
           </div>
-          <div class="divider"></div>
+          <br>
           `).join(" ")).join(" ")}
       </div>
-    `
+    `;
 
-    // const reviews = `
-    //   <ul id="reviewsInfo">
-    //     <div id="reviewsInfoScrollable">
-    //       ${data.map(teams => teams.scientists.map(scientists => `
-
-    //     <li>
-    //       <div id="reviewCard">
-    //         <h2>Reviews for ${scientists.name}</h2><p>by ${scientists.reviews.map(reviews => " " + reviews.reviewerName)}</p> <br>
-    //       </div>
-    //       ${scientists.reviews.map(reviews => `
-    //       <div id="reviewCardDetails">
-    //         <strong class="teamInfo">Audience Seat Number: </strong> <p>${reviews.id}</p> <br>
-    //         <strong class="teamInfo">Rating: </strong> <p>${reviews.ratingStars} Stars</p> <br>
-    //         <strong class="teamInfo">Reviewer Name: </strong> <p>${reviews.reviewerName}</p> <br>
-    //         <strong class="teamInfo">Mad-Scientist Foundation Member? </strong> <p>${reviews.fromMadSci}</p> <br>
-    //         <strong class="teamInfo">Review: </strong> <p>${reviews.reviewDesc}</p> <br>
-            
-    //         `).join(" ")}
-    //       </div>  
-    //     </li>
-
-    //     `).join(" ")).join(" ")}
-    //     </div>
-    //   <ul>
-    // `;
+    const foot = `
+      <div class="footerContainer">
+        <ul class="footerList">
+          <li class="footDetails"><a href="#" class="footText">Contact Our Lab</a></li>
+          <li class="footDetails"><a href="#" class="footText">About Our Experiments</a></li>
+          <li class="footDetails"><a href="#" class="footText">Test Subject Sign-Up</a></li>
+          <li class="footDetails"><a href="#" class="footText">Hall Of Madness</a></li>
+          <li class="footDetails"><a href="#" class="footText">"Safety" Regulations</a></li>
+          <li class="footDetails"><a href="#" class="footText">Evil Sponsors</a></li>
+        </ul>
+        <div class="copyright">©2025 Timeless Mad-Scientist Science Fair</div>
+      </div>
+    `;
     
     documentBody.innerHTML = body;
     rosterContainer.innerHTML = roster;
     scientistsContainer.innerHTML = scientist;
     reviewsContainer.innerHTML = reviews;
+    footer.innerHTML = foot;
 
   } catch (error) {
     console.error("Error:", error);
