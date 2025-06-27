@@ -77,3 +77,9 @@ Finally, after defining your database path, make sure your prisma client is gene
 🚀 Running the Project
 
 Upon ensuring your tables are seeded with data, proceed to run the backend server (```node server.js```) and the frontend preview (```npm run dev```) from their respective directories to see the entire project with the seeded with data.
+
+---
+
+_Thank you for visiting my repo!_
+
+**George Calderon** | [George's GitHub Profile](https://github.com/gcalder1)
